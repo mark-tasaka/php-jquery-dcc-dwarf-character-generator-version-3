@@ -4,6 +4,10 @@ Designed with PHP and jQuery, the Dungeon Crawl Classics Dwarf Character Generat
 -----------------------------
 
 
+Update 1.02: 2020-12-28
+
+Update languages.js to allow for automatic bonus language as described in the DCC Core Rulebook for the Dwarf character class. 
+
 
 Update 1.01: 2020-12-27
 
