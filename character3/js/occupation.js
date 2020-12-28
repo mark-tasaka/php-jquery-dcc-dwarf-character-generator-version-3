@@ -6,17 +6,17 @@ function getOccupation(){
 		//Dwarves 0 - 10
         // 4 - Herder
         
-		{"occupation": "Dwarven Apothecarist", "race": "Dwarf", "trainedWeapon": "Cudgel (as Staff)", "damage": "1d4", "tradeGoods": "Steel Vial"},
-		{"occupation": "Dwarven Blacksmith", "race": "Dwarf", "trainedWeapon": "Hammer (as Club)", "damage": "1d4", "tradeGoods": "Mithril, 1 oz."},
-		{"occupation": "Dwarven Riveter", "race": "Dwarf", "trainedWeapon": "Hammer (as Club)", "damage": "1d4", "tradeGoods": "Mithril, 1 oz."},
-		{"occupation": "Dwarven Chestmaker", "race": "Dwarf", "trainedWeapon": "Chisel (as Dagger)", "damage": "1d4", "tradeGoods": "Wood, 10 lbs."},
-		{"occupation": "Dwarven Herder", "race": "Dwarf", "trainedWeapon": "Staff", "damage": "1d4", "tradeGoods": "Sow"},
-		{"occupation": "Dwarven Miner", "race": "Dwarf", "trainedWeapon": "Pick (as Club)", "damage": "1d4", "tradeGoods": "Lantern"},
-		{"occupation": "Dwarven Linkman", "race": "Dwarf", "trainedWeapon": "Pick (as Club)", "damage": "1d4", "tradeGoods": "Lantern"},
-		{"occupation": "Dwarven Mushroom Farmer", "race": "Dwarf", "trainedWeapon": "Shovel (as Staff)", "damage": "1d4", "tradeGoods": "Sack"},
-		{"occupation": "Dwarven Rat-Catcher", "race": "Dwarf", "trainedWeapon": "Club", "damage": "1d4", "tradeGoods": "Net"},
-		{"occupation": "Dwarven Stonemason", "race": "Dwarf", "trainedWeapon": "Hammer (as club)", "damage": "1d4", "tradeGoods": "Fine Stones, 10 lbs."},
-		{"occupation": "Dwarven Mason", "race": "Dwarf", "trainedWeapon": "Hammer (as club)", "damage": "1d4", "tradeGoods": "Fine Stones, 10 lbs."}
+		{"occupation": "Dwarf Apothecarist", "race": "Dwarf", "trainedWeapon": "Cudgel (as Staff)", "damage": "1d4", "tradeGoods": "Steel Vial"},
+		{"occupation": "Dwarf Blacksmith", "race": "Dwarf", "trainedWeapon": "Hammer (as Club)", "damage": "1d4", "tradeGoods": "Mithril, 1 oz."},
+		{"occupation": "Dwarf Riveter", "race": "Dwarf", "trainedWeapon": "Hammer (as Club)", "damage": "1d4", "tradeGoods": "Mithril, 1 oz."},
+		{"occupation": "Dwarf Chestmaker", "race": "Dwarf", "trainedWeapon": "Chisel (as Dagger)", "damage": "1d4", "tradeGoods": "Wood, 10 lbs."},
+		{"occupation": "Dwarf Herder", "race": "Dwarf", "trainedWeapon": "Staff", "damage": "1d4", "tradeGoods": "Sow"},
+		{"occupation": "Dwarf Miner", "race": "Dwarf", "trainedWeapon": "Pick (as Club)", "damage": "1d4", "tradeGoods": "Lantern"},
+		{"occupation": "Dwarf Linkman", "race": "Dwarf", "trainedWeapon": "Pick (as Club)", "damage": "1d4", "tradeGoods": "Lantern"},
+		{"occupation": "Dwarf Mushroom Farmer", "race": "Dwarf", "trainedWeapon": "Shovel (as Staff)", "damage": "1d4", "tradeGoods": "Sack"},
+		{"occupation": "Dwarf Rat-Catcher", "race": "Dwarf", "trainedWeapon": "Club", "damage": "1d4", "tradeGoods": "Net"},
+		{"occupation": "Dwarf Stonemason", "race": "Dwarf", "trainedWeapon": "Hammer (as club)", "damage": "1d4", "tradeGoods": "Fine Stones, 10 lbs."},
+		{"occupation": "Dwarf Mason", "race": "Dwarf", "trainedWeapon": "Hammer (as club)", "damage": "1d4", "tradeGoods": "Fine Stones, 10 lbs."}
 		/*
 		//Elves 11 - 20
 		// 14 - Falconer

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dungeon Crawl Classics Dwarf Character Generator</title>
+<title>DCC Dwarf Generator Version 3</title>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
@@ -14,7 +14,6 @@
 		
 
 	<link rel="stylesheet" type="text/css" href="css/dwarf.css">
-	<link rel="stylesheet" type="text/css" href="css/dwarf_post.css">
     
     
     <script type="text/javascript" src="./js/dieRoll.js"></script>
@@ -44,11 +43,19 @@
     include 'php/clothing.php';
     include 'php/abilityScoreGen.php';
     include 'php/randomName.php';
+    include 'php/xp.php';
     
 
         if(isset($_POST["theCharacterName"]))
         {
             $characterName = $_POST["theCharacterName"];
+    
+        }
+        
+        
+        if(isset($_POST["thePlayerName"]))
+        {
+            $playerName = $_POST["thePlayerName"];
     
         }
         
@@ -73,6 +80,10 @@
             $level = $_POST["theLevel"];
         
         } 
+
+        
+        $xpNextLevel = getXPNextLevel ($level);
+        
         
         if(isset($_POST["theAbilityScore"]))
         {
@@ -136,27 +147,39 @@
 
        $title = title($level, $alignment);
 
-       
+
        if(isset($_POST["theLuckyWeapon"]))
        {
-           $luckyWeapon = $_POST["theLuckyWeapon"];
+           $luckyWeaponNumberString = $_POST["theLuckyWeapon"];
        } 
 
+       $luckyWeaponNumber = (int)$luckyWeaponNumberString;
+       $luckyWeapon = getWeapon($luckyWeaponNumber)[0];
 
          
         $weaponArray = array();
         $weaponNames = array();
         $weaponDamage = array();
-    
-    
-        if(isset($_POST["theWeapons"]))
+
+        
+        //For Random Select weapon
+        if(isset($_POST['thecheckBoxRandomWeaponsV3']) && $_POST['thecheckBoxRandomWeaponsV3'] == 1) 
         {
-            foreach($_POST["theWeapons"] as $weapon)
+            $weaponArray = getRandomWeapons($luckyWeaponNumber);
+
+        }
+        else
+        {
+            if(isset($_POST["theWeapons"]))
             {
-                array_push($weaponArray, $weapon);
+                foreach($_POST["theWeapons"] as $weapon)
+                {
+                    array_push($weaponArray, $weapon);
+                }
             }
         }
-    
+
+
     foreach($weaponArray as $select)
     {
         array_push($weaponNames, getWeapon($select)[0]);
@@ -170,14 +193,51 @@
         $gearArray = array();
         $gearNames = array();
     
-    
-        if(isset($_POST["theGear"]))
+
+    //For Random Select gear
+    if(isset($_POST['theCheckBoxRandomGear']) && $_POST['theCheckBoxRandomGear'] == 1) 
+    {
+        $gearArray = getRandomGear();
+
+        $weaponCount = count($weaponArray);
+
+
+        for($i = 0; $i < $weaponCount; ++$i)
         {
-            foreach($_POST["theGear"] as $weapon)
+
+            if($weaponArray[$i] == "16")
             {
-                array_push($gearArray, $weapon);
+                array_push($gearArray, 24);
+                array_push($gearArray, 25);
             }
+
+            if($weaponArray[$i] == "4")
+            {
+                array_push($gearArray, 26);
+            }
+
+            if($weaponArray[$i] == "18")
+            {
+                array_push($gearArray, 27);
+            }
+
+
         }
+
+    }
+    else
+    {
+        //For Manually select gear
+        if(isset($_POST["theGear"]))
+            {
+                foreach($_POST["theGear"] as $gear)
+                {
+                    array_push($gearArray, $gear);
+                }
+            }
+
+    }
+
     
         foreach($gearArray as $select)
         {
@@ -245,6 +305,13 @@
                 echo $level;
            ?>
         </span>
+               
+       <span id="xpNextLevel">
+           <?php
+                echo $xpNextLevel;
+           ?>
+        </span>
+
        
 
        
@@ -253,6 +320,14 @@
                 echo $characterName;
            ?>
         </span>
+
+        
+       <span id="playerName">
+           <?php
+                echo $playerName;
+           ?>
+        </span>
+       
        
               
          <span id="alignment">
@@ -480,7 +555,7 @@
             "move": <?php echo $speed ?> + addLuckToSpeed (birthAugur, luckMod),
             "trainedWeapon": profession.trainedWeapon,
             "tradeGoods": profession.tradeGoods,
-            "addLanguages": "Common" + bonusLanguages,
+            "addLanguages": "Common, Dwarven" + bonusLanguages,
             "armourClass": <?php echo $totalAcDefense ?> + baseAC,
             "hp": getHitPoints (level, staminaMod) + hitPointAdjustPerLevel(birthAugur,  luckMod),
 			"melee": strengthMod + meleeAdjust(birthAugur, luckMod),
@@ -565,7 +640,7 @@
       $("#rangeDamage").html(addModifierSign(data.rangeDamage));
 
       
-      $("#baseAC").html("Base AC: " + data.acBase);
+      $("#baseAC").html("(" + data.acBase + ")");
       $("#trainedWeapon").html("Trained Weapon: " + data.trainedWeapon);
       $("#tradeGoods").html("Trade Goods: " + data.tradeGoods);
       

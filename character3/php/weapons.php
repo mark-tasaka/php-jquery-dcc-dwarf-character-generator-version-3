@@ -1,5 +1,6 @@
 <?php
 
+/*Dwarf*/ 
 
     function getWeapon($input)
     {
@@ -33,6 +34,35 @@
         return $array1[$input];
         
     }
+
+
+
+function getRandomWeapons($luckyWeaponNumber)
+{
+    //cast to int
+    //unneccesary with php, but good practice
+    $luckyWeapon = (int)$luckyWeaponNumber;
+
+    $weaponsArray = array(0, 3, 4, 5, 9, 10, 13, 14, 16, 17, 18, 19, 21, 22);
+
+    //shuffle $weaponsArray
+    shuffle($weaponsArray); 
+
+    $numberOfWeapons = rand (2, 8);
+
+    $weaponsHas = array();
+
+    array_push($weaponsHas, $luckyWeapon);
+
+    for($j = 0; $j < $numberOfWeapons; ++$j)
+    {
+        $weapon = $weaponsArray[$j];
+        array_push($weaponsHas, $weapon);
+    }
+
+    return $weaponsHas;
+}
+
 
 
 
